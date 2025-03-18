@@ -1,0 +1,28 @@
+#region Gussing Game
+
+Console.WriteLine( "Please Enter your number ");
+int gussNum = Convert.ToInt32(Console.ReadLine());
+Random random = new Random();
+int randomNum = random.Next(1, 11);
+bool isEqule = false;
+while(!isEqule)
+{
+    if(gussNum > randomNum)
+    {
+        Console.WriteLine(" your Number is High");
+        gussNum = Convert.ToInt32(Console.ReadLine());
+    }
+    else if (gussNum < randomNum)
+    {
+        Console.WriteLine(" your Number is Low");
+        gussNum = Convert.ToInt32(Console.ReadLine());
+    }
+    else
+    {
+        isEqule = true;
+        Console.WriteLine("Congratulation you are win");
+    }
+
+}
+
+#endregion
