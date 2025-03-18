@@ -1,0 +1,49 @@
+//Dice Game
+Console.WriteLine("Please enter your name ");
+string name = Console.ReadLine();
+Console.WriteLine("Enter Number of Times");
+int n = int.Parse(Console.ReadLine());
+Random random = new Random();
+int dice1 = random.Next(1, 7);
+int ratrOfWin1 = 0;
+int ratrOfWin2 = 0;
+
+for (int i = 0; i< n; i++)
+{
+    Console.WriteLine("prass any Key to play");
+    Console.ReadLine();
+    Console.WriteLine($"{name} your are get {dice1}");
+
+    int dice2 = random.Next(1, 7);
+    Console.WriteLine($"Computer get {dice2}");
+    if (dice1 > dice2)
+    {
+        Console.WriteLine($"{name} you are win this time ");
+        ratrOfWin1++;
+    }
+    else if (dice1 < dice2)
+    {
+        Console.WriteLine("Computer win this time ");
+        ratrOfWin2++;
+    }
+    else
+    {
+        Console.WriteLine("Draw");
+    }
+
+    }
+Console.WriteLine( "------------------------------------------------------");
+if (ratrOfWin1 > ratrOfWin2)
+{
+    Console.WriteLine($"{name} you are win All of game  {ratrOfWin1} times");
+}
+else if (ratrOfWin1 < ratrOfWin2)
+{
+    Console.WriteLine($"Computer win All of game {ratrOfWin2} times");
+}
+else
+{
+    Console.WriteLine("Draw");
+}
+
+
