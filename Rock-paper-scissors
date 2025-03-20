@@ -1,0 +1,80 @@
+Console.WriteLine("Welcome to the game!");
+Console.WriteLine("Enter Your Name: ");
+string playerName = Console.ReadLine();
+
+Random random = new Random();
+int playerScore = 0;
+int comScore = 0;
+
+while (playerScore < 3 && comScore < 3)
+{
+    Console.WriteLine($"\nWelcome {playerName}, please enter S for Stone, P for Paper, or C for Cutter:");
+    char playerCharSelected = char.ToUpper(Console.ReadKey().KeyChar);
+    Console.WriteLine(); 
+
+    if (playerCharSelected != 'S' && playerCharSelected != 'P' && playerCharSelected != 'C')
+    {
+        Console.WriteLine(" Invalid input! Please enter S, P, or C.");
+        continue;
+    }
+
+    int randomNum = random.Next(0, 3);
+
+    if (randomNum == 0)
+    {
+        switch (playerCharSelected)
+        {
+            case 'S':
+                Console.WriteLine(" Draw");
+                break;
+            case 'P':
+                Console.WriteLine(" You Win!");
+                playerScore++;
+                break;
+            case 'C':
+                Console.WriteLine(" Computer Wins!");
+                comScore++;
+                break;
+        }
+    }
+    else if (randomNum == 1)
+    {
+        switch (playerCharSelected)
+        {
+            case 'S':
+                Console.WriteLine(" Computer Wins!");
+                comScore++;
+                break;
+            case 'P':
+                Console.WriteLine(" Draw");
+                break;
+            case 'C':
+                Console.WriteLine(" You Win!");
+                playerScore++;
+                break;
+        }
+    }
+    else if (randomNum == 2)
+    {
+        switch (playerCharSelected)
+        {
+            case 'S':
+                Console.WriteLine(" You Win!");
+                playerScore++;
+                break;
+            case 'P':
+                Console.WriteLine(" Computer Wins!");
+                comScore++;
+                break;
+            case 'C':
+                Console.WriteLine(" Draw");
+                break;
+        }
+    }
+
+    Console.WriteLine($" Score: {playerName} ({playerScore}) - Computer ({comScore})");
+}
+
+Console.WriteLine(playerScore == 3 ? " Congratulations! You are the final winner!" : " Computer is the final winner! Better luck next time.");
+   
+
