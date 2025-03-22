@@ -1,0 +1,92 @@
+ float exchangeRate(float rate)
+{
+    Console.WriteLine("How much?");
+    float Curr1 = float.Parse(Console.ReadLine());
+    float Curr2 = Curr1 * rate;
+    return Curr2;
+}
+Console.WriteLine("Enter \"a\" to choose Exchange rate and currencies or t to Temperature Converter or e  to exit ");
+string iput = Console.ReadLine().ToLower();
+if (iput == "a")
+{
+    Console.WriteLine("welcome to Exchange rate Section ");
+    Console.WriteLine("choose 1 to convert form Doler USA to KSA Ryal");
+    Console.WriteLine("choose 2 to convert to Doler USA from KSA Ryal");
+    Console.WriteLine("choose 3 to convert form Egy Pound to KSA Ryal");
+    Console.WriteLine("choose 4 to convert to Egy Pound from KSA Ryal");
+    Console.WriteLine("choose 5 to convert form Doler USA to Egy Pound");
+    Console.WriteLine("choose 6 to convert to Doler USA from Egy Pound");
+    string option = Console.ReadLine();
+    switch (option)
+    {
+        case "1": // Doler USA to KSA Ryal
+            Console.WriteLine("Doler USA to KSA Ryal");
+            float curr2 = exchangeRate(3.75f);
+            Console.WriteLine($"Ryal is : {curr2}");
+            break;
+
+        case "2": //to Doler USA from KSA Ryal
+            Console.WriteLine("Doler USA from KSA Ryal");
+            curr2 = exchangeRate(0.27f);
+            Console.WriteLine($"Doler is : {curr2}");
+            break;
+        case "3": //from egyptian pound to KSA Ryal
+            Console.WriteLine("from egyptian pound to KSA Ryal");
+            curr2 = exchangeRate(0.075f);
+            Console.WriteLine($"Ryal is : {curr2}");
+            break;
+
+        case "4": //to egyptian pound from KSA Ryal
+            Console.WriteLine("to egyptian pound from KSA Ryal");
+            curr2 = exchangeRate(13.33f);
+            Console.WriteLine($"Egyptian pound is : {curr2}");
+            break;
+        case "5":   //from Doler USA to egyptian pound
+            Console.WriteLine("from Doler USA to egyptian pound");
+            curr2 = exchangeRate(0.020f);
+            Console.WriteLine($"Doler is : {curr2}");
+            break;
+        case "6": //to Doler USA from egyptian pound
+            Console.WriteLine("to Doler USA from egyptian pound");
+            curr2 = exchangeRate(50f);
+            Console.WriteLine($"Doler is : {curr2}");
+            break;
+        default:
+            Console.WriteLine("Invalid input");
+            break;
+
+    }
+}else if(iput == "t")
+{
+    Console.WriteLine("Welcome to Temperature Converter");
+    Console.WriteLine("Choose 1 to convert from Celsius to Fahrenheit");
+    Console.WriteLine("Choose 2 to convert from Fahrenheit to Celsius");
+    string option = Console.ReadLine();
+    switch (option)
+    {
+        case "1":
+            Console.WriteLine("Enter the temperature in Celsius");
+            float celsius = float.Parse(Console.ReadLine());
+            float fahrenheit = (celsius * 9 / 5) + 32;
+            Console.WriteLine($"The temperature in Fahrenheit is: {fahrenheit}");
+            break;
+        case "2":
+            Console.WriteLine("Enter the temperature in Fahrenheit");
+            float fahrenheit1 = float.Parse(Console.ReadLine());
+            float celsius1 = (fahrenheit1 - 32) * 5 / 9;
+            Console.WriteLine($"The temperature in Celsius is: {celsius1}");
+            break;
+        default:
+            Console.WriteLine("Invalid input");
+            break;
+    }
+}
+else if (iput == "e")
+{
+    Console.WriteLine("Good Bye");
+}
+else
+{
+    Console.WriteLine("Invalid input");
+}
+Console.WriteLine("thank you for use program");
