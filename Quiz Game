@@ -1,0 +1,64 @@
+
+#region Quiz Game 
+
+Console.WriteLine("Welcome to the Quiz Game!");
+string[] text = File.ReadAllLines("questions.txt");
+List<string> Qu = new List<string>();
+List<string> Ans = new List<string>();
+
+for (int i = 0; i < text.Length; i++)
+{
+    if(i % 4 == 0)
+    {
+        Qu.Add(text[i]);
+    }
+    else
+    {
+        Ans.Add(text[i]);
+    }
+
+}
+int score = 0;
+int indexOfQuestion = 0;
+int indexOfAns = 0;
+bool isCorrect(int index)
+{
+    string correctSign = Ans[index];
+    return correctSign.StartsWith(">");
+      
+}
+Console.WriteLine("Choose the correct answar by number");
+try
+{
+    while (indexOfQuestion < Qu.Count - 1)
+    {
+        
+        Console.WriteLine($"{Qu[indexOfQuestion]}");
+
+
+        for (int i = 0; i < 3; i++)
+        {
+            Console.WriteLine($"{i + 1} - {Ans[indexOfAns].Replace(">", "")}");
+            ++indexOfAns;
+        }
+        int Ansawr = Convert.ToInt32(Console.ReadLine())-1;
+        if (isCorrect(Ansawr))
+        {
+            score++;
+            Console.WriteLine($"You Are great Your Score is : {score}");
+        }
+        else {
+            Console.WriteLine("your answar is wrong");
+        }
+
+        indexOfQuestion++;
+    }
+} catch (Exception e) {
+    Console.WriteLine(e.Message);
+}
+
+Console.WriteLine($"Total score is : {score}");
+
+
+
+#endregion
