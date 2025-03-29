@@ -1,0 +1,81 @@
+#region XOGame
+
+Console.WriteLine("Welcome to XO Game");
+string[] arr = new string[9];
+for (int i = 0; i < 9; i++)
+{
+    arr[i] =(i+1).ToString() ;
+}
+ void DisPlayRound()
+{
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            Console.Write(" " + arr[i * 3 + j] + " |");
+        }
+        Console.WriteLine();
+        Console.WriteLine("- - - - - -");
+    }
+
+}
+bool isPlayerTrun= true;
+string optionChar ="";
+int arrIndexIput = 0;
+
+while (!isVactor())
+{
+ DisPlayRound();
+    try
+    {
+        Console.WriteLine("Choose you char X or O");
+         optionChar =Console.ReadLine().ToUpper();
+
+        if(optionChar != "O" && optionChar != "X" )
+        {
+            Console.WriteLine("Invalid Input Please Try again....");
+             optionChar = Console.ReadLine().ToUpper();
+        }
+
+        Console.WriteLine("Enter Your Posation");
+
+         arrIndexIput = Convert.ToInt32(Console.ReadLine());
+        if(arrIndexIput <= 0 || arrIndexIput > 9)
+        {
+            Console.WriteLine("out of Positions chooese betwean 1 - 9 ...");
+            arrIndexIput = Convert.ToInt32(Console.ReadLine());
+        }
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine(e.Message);
+    }
+        
+    if ((optionChar == "X" || optionChar == "O") && arr[arrIndexIput - 1] != "X" && arr[arrIndexIput - 1] != "O")
+    {
+        arr[arrIndexIput - 1] = optionChar;
+    }
+    else
+    {
+        Console.WriteLine("Invalid Input Please Try again....");
+    }
+
+
+}
+
+Console.WriteLine("You Win .. !");
+
+bool isVactor()
+{
+    bool Row1= arr[0] == arr[1]&& arr[1]==arr[2] ;
+    bool Row2= arr[3] == arr[4]&& arr[4]==arr[5] ;
+    bool Row3= arr[6] == arr[7]&& arr[7]==arr[8] ;
+    bool Cum1= arr[0] == arr[3]&& arr[3]==arr[6] ;
+    bool Cum2= arr[1] == arr[4]&& arr[4]==arr[7] ;
+    bool Cum3= arr[2] == arr[5]&& arr[5]==arr[8] ;
+    bool Diag1 = arr[0] == arr[4] && arr[4] == arr[8];
+    bool Diag2 = arr[2] == arr[4] && arr[4] == arr[6];
+    return Row1 || Row2 || Row3 || Cum1 || Cum2 || Cum3 || Diag1 || Diag2;
+}
+
+#endregion
